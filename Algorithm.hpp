@@ -7,16 +7,17 @@
 // TC1031.501
 
 #include <algorithm>
+#include <iterator>
 
 namespace alg {
-	
+
 	// Sorts random access iterator range by quick sort.
 	// Time complexity: O(n*log(n))
 	template<typename It>
 	inline void quick_sort(It begin, It end) {
 		if (end <= begin) return;
-		It pivot{begin};
-		It middle{begin+1};
+		It pivot{ begin };
+		It middle{ begin + 1 };
 
 		for (It i{ begin + 1 }; i != end; ++i) {
 			if (*i < *pivot) {
@@ -24,25 +25,33 @@ namespace alg {
 				++middle;
 			}
 		}
-		std::iter_swap(begin, middle-1);
-		quick_sort(begin, middle-1);
+		std::iter_swap(begin, middle - 1);
+		quick_sort(begin, middle - 1);
 		quick_sort(middle, end);
 	}
+
+	template <typename Container>
+	void quick_sort(const Container& container) {
+		quick_sort(container.begin(), container.end());
+	}
+
 
 	template <typename It, typename K>
 	inline It binary_search(It begin, It end, const K& key) {
 		if (begin > end) {
-			It middle{begin + (end-1)/2};
+			It middle{ begin + std::distance(begin, end) / 2 };
 
 			if (*middle == key) return middle;
 
-			if(key < *middle)
-				return binary_search(begin, middle, key);
+			if (key < *middle)
+				return binary_search<It, K>(begin, middle, key);
 
-			return binary_search(middle, begin, key);
+			return binary_search<It, K>(middle, begin, key);
+
 		}
 		return end;
 	}
+
 }
 
 #endif // !QUICK_SORT_HPP

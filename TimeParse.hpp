@@ -62,4 +62,24 @@ std::ostream& operator<<(std::ostream& out, const tp::Entry& entry) {
 	return out;
 }
 
+bool operator<(const tp::Entry& rhs, const tp::Entry& lhs) {
+	return rhs.first < lhs.first;
+}
+
+
+bool operator<(const tp::Entry& rhs, const time_t& lhs) {
+	return rhs.first < lhs;
+}
+
+bool operator<(const time_t& rhs, const tp::Entry& lhs) {
+	return rhs < lhs.first;
+}
+
+bool operator==(const tp::Entry& rhs, const time_t& lhs) {
+	return rhs.first == lhs;
+}
+
+bool operator==(const time_t& rhs, const tp::Entry& lhs) {
+	return rhs == lhs.first;
+}
 #endif // !TIME_PARSE_HPP

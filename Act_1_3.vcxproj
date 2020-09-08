@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="fileio.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Tests.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fileio.hpp" />
