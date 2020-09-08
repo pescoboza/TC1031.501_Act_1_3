@@ -23,14 +23,11 @@ class tp {
 	// Returns the time value from a string.
 	static time_t getTimeFromStr(const std::string& str, const char* timeFmt = TIME_FORMAT);
 
+	// Adds an entry to a
+	static void add_entry(TimeMap& time_map, const std::string& line);
 
-	// Finds entries and returns views to them from an iterator range of a map-like object.
-	/*template<typename It>
-	inline std::vector<const Entry*> findEntries(It begin, It end, time_t min, time_t max) {
-		return {};
-	}*/
-
-
+	// Returns the entry views of entries in inclusive range.
+	static std::vector<const Entry*> get_entries(const TimeMap& time_map, time_t min, time_t max);
 };
 
 // Operator overloading for the Entry typedef for it to work in stl containers.
