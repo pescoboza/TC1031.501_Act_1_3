@@ -8,7 +8,7 @@
 
 #include <algorithm>
 
-namespace sort {
+namespace alg {
 	
 	// Sorts random access iterator range by quick sort.
 	// Time complexity: O(n*log(n))

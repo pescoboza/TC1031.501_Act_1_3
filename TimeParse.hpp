@@ -6,11 +6,12 @@
 #include <string>
 #include <vector>
 
-#include "quick_sort.hpp"
 
 namespace tp {
 	using TimeMap = std::vector<std::pair<time_t, std::string>>;
-	using Entry = std::pair<const time_t, std::string>;
+	using Entry = std::pair<time_t, std::string>;
+
+
 
 	// Time format to be used by the time parser
 	const char* TIME_FORMAT{ "%b %d %H:%M:%S" };
@@ -36,7 +37,7 @@ namespace tp {
 	// Finds entries and returns views to them from an iterator range of a map-like object.
 	template<typename It>
 	inline std::vector<const Entry*> findEntries(It begin, It end, time_t min, time_t max) {
-		
+		return {};
 	}
 
 
@@ -54,5 +55,11 @@ namespace tp {
 	//	return entries;
 	//}
 };
+
+
+std::ostream& operator<<(std::ostream& out, const tp::Entry& entry) {
+	out << '(' << entry.first << ", " << entry.second << ')';
+	return out;
+}
 
 #endif // !TIME_PARSE_HPP

@@ -26,7 +26,13 @@
     <ClInclude Include="fileio.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="quick_sort.hpp">
+    <ClInclude Include="TimeParse.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithm.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

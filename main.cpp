@@ -1,16 +1,25 @@
 #include "Algorithm.hpp"
 #include "TimeParse.hpp"
+#include "Utils.hpp"
 
 int main() {
 
 	tp::TimeMap time_map{
-		{4, "four"}
+		{4, "four"},
 		{0, "zero"},
 		{1, "one"},
 		{2, "two"},
 		{3, "three"},
-		
 	};
+	
+	std::cout << "Before:\n";
+	ut::print_iterable(time_map, "\n");
+
+	alg::quick_sort(time_map.begin(), time_map.end());
+
+	std::cout << "After:\n";
+	ut::print_iterable(time_map, "\n");
+
 
 	return 0;
 }
