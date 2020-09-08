@@ -1,4 +1,5 @@
 #ifndef TIME_PARSE_HPP
+#define TIME_PARSE_HPP
 
 #include <ctime>
 #include <iomanip>

@@ -2,7 +2,6 @@
 
 int main() {
 	test::quick_sort_test();
-
 }
 
 

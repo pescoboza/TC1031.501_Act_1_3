@@ -1,4 +1,4 @@
-#ifndef ALGORITH_HPP
+#ifndef ALGORITHM_HPP
 #define ALGORITHM_HPP
 
 // Pedro Escoboza
@@ -38,16 +38,15 @@ namespace alg {
 
 	template <typename It, typename K>
 	inline It binary_search(It begin, It end, const K& key) {
-		if (begin > end) {
-			It middle{ begin + std::distance(begin, end) / 2 };
+		while (begin != end) {
+			It middle{begin + std::distance(begin, end)/2};
 
 			if (*middle == key) return middle;
 
-			if (key < *middle)
-				return binary_search<It, K>(begin, middle, key);
-
-			return binary_search<It, K>(middle, begin, key);
-
+			if (*middle < key)
+				begin = middle + 1;
+			else
+				end = middle - 1;
 		}
 		return end;
 	}
