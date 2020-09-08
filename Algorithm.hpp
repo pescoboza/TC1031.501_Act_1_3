@@ -14,7 +14,17 @@ namespace alg {
 	// Sorts random access iterator range by quick sort.
 	// Time complexity: O(n*log(n))
 	template<typename It>
-	inline void quick_sort(It begin, It end) {
+	void quick_sort(It begin, It end);
+	
+	// Wrapper for containers defining begin and end
+	template <typename Container>
+	void quick_sort(const Container& container);
+
+	template <typename It, typename K>
+	It binary_search(It begin, It end, const K& key);
+
+	template<typename It>
+	void quick_sort(It begin, It end){
 		if (end <= begin) return;
 		It pivot{ begin };
 		It middle{ begin + 1 };
@@ -30,16 +40,15 @@ namespace alg {
 		quick_sort(middle, end);
 	}
 
-	template <typename Container>
-	void quick_sort(const Container& container) {
+	template<typename Container>
+	void quick_sort(const Container& container){
 		quick_sort(container.begin(), container.end());
 	}
 
-
-	template <typename It, typename K>
-	inline It binary_search(It begin, It end, const K& key) {
+	template<typename It, typename K>
+	It binary_search(It begin, It end, const K& key){
 		while (begin != end) {
-			It middle{begin + std::distance(begin, end)/2};
+			It middle{ begin + std::distance(begin, end) / 2 };
 
 			if (*middle == key) return middle;
 

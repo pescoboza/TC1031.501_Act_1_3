@@ -142,6 +142,7 @@
     <ClCompile Include="fileio.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Tests.hpp" />
+    <ClCompile Include="TimeParse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fileio.hpp" />

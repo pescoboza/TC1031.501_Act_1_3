@@ -27,6 +27,9 @@
     <ClCompile Include="Tests.hpp">
       <Filter>Source Files\Tests</Filter>
     </ClCompile>
+    <ClCompile Include="TimeParse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fileio.hpp">
