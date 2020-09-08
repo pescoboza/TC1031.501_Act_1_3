@@ -147,7 +147,7 @@
     <ClInclude Include="fileio.hpp" />
     <ClInclude Include="Algorithm.hpp" />
     <ClInclude Include="TimeParse.hpp" />
-    <ClInclude Include="Utils.hpp" />
+    <ClInclude Include="utilities.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

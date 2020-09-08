@@ -6,6 +6,7 @@
 #include "Algorithm.hpp"
 #include "TimeParse.hpp"
 #include "utilities.hpp"
+#include "fileio.hpp"
 
 namespace test {
 
@@ -37,27 +38,6 @@ namespace test {
 };
 
 int main() {
-	
-}
-
-
-
-
-#include <iostream>
-#include <iterator>
-#include <map>
-#include <sstream>
-#include <string>
-#include <vector>
-
-#include "fileio.hpp"
-
-
-
-
-
-int main() {
-	using ut::input;
 
 	const char* INPUT_FILENAME{"bitacora.txt"};
 
@@ -77,8 +57,8 @@ int main() {
 
 	std::cout << "Time format: " << tp::TIME_FORMAT << std::endl;
 
-	auto beginTime{ tp::getTimeFromStr(input("Enter begin time:")) };
-	auto endTime{ tp::getTimeFromStr(input("Enter end time:")) };
+	auto beginTime{ tp::getTimeFromStr(ut::input("Enter begin time:")) };
+	auto endTime{ tp::getTimeFromStr(ut::input("Enter end time:")) };
 	
 	// Swap the values if necessary
 	if (endTime < beginTime) {
@@ -86,7 +66,7 @@ int main() {
 	}
 
 	// Retrieve the map entries in the given range
-	auto entries{ tp::findEntriesInRange(time_map, beginTime, endTime) };
+	auto entries{ tp::get_entries(time_map, beginTime, endTime) };
 
 	// Case for no entries available
 	if (entries.empty()) {

@@ -35,7 +35,7 @@
     <ClInclude Include="Algorithm.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.hpp">
+    <ClInclude Include="utilities.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
