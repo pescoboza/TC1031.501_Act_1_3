@@ -1,5 +1,5 @@
-#ifndef QUICK_SORT_HPP
-#define QUICK_SORT_HPP
+#ifndef ALGORITH_HPP
+#define ALGORITHM_HPP
 
 // Pedro Escoboza
 // A01251531
@@ -27,6 +27,21 @@ namespace sort {
 		std::iter_swap(begin, middle-1);
 		quick_sort(begin, middle-1);
 		quick_sort(middle, end);
+	}
+
+	template <typename It, typename K>
+	inline It binary_search(It begin, It end, const K& key) {
+		if (begin > end) {
+			It middle{begin + (end-1)/2};
+
+			if (*middle == key) return middle;
+
+			if(key < *middle)
+				return binary_search(begin, middle, key);
+
+			return binary_search(middle, begin, key);
+		}
+		return end;
 	}
 }
 
