@@ -1,9 +1,16 @@
 #include "Algorithm.hpp"
-
+#include "TimeParse.hpp"
 
 int main() {
 
-
+	tp::TimeMap time_map{
+		{4, "four"}
+		{0, "zero"},
+		{1, "one"},
+		{2, "two"},
+		{3, "three"},
+		
+	};
 
 	return 0;
 }
