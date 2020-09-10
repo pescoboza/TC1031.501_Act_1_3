@@ -15,9 +15,9 @@
 #include <stdexcept>
 
 namespace fio {
-	std::vector<std::string> readLines(const char* t_filename, unsigned t_numLines = 0U);
-
-	std::stringstream readFile(const char* t_filename);
+	std::vector<std::string> readLines(const char* filename, unsigned numLines = 0U);
+	std::stringstream readFile(const char* filename);
+	bool writeLines(const char* filename, const std::vector<std::string>& lines);
 };
 
 #endif // !FILE_IO_HPP

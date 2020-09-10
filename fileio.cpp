@@ -41,4 +41,12 @@ namespace fio {
 
 		return stream;
 	}
+	
+	bool writeLines(const char* filename, const std::vector<std::string>& lines){
+		std::ofstream out{filename};
+		if (!out.is_open()) return false;
+		for (const auto& line : lines)
+			out << line << '\n';
+		return true;
+	}
 }
