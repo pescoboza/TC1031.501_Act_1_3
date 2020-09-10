@@ -18,6 +18,8 @@ namespace fio {
 	std::vector<std::string> readLines(const char* filename, unsigned numLines = 0U);
 	std::stringstream readFile(const char* filename);
 	bool writeLines(const char* filename, const std::vector<std::string>& lines);
+	bool writeLines(const char* filename, const std::vector<std::string*>& lines);
+	bool writeLines(const char* filename, const std::vector<const std::string*>& lines);
 };
 
 #endif // !FILE_IO_HPP

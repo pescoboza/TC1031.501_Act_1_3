@@ -47,6 +47,7 @@ namespace test {
 				break;
 			}
 			catch (std::exception& e) {
+				e;
 				std::cout << "Invalid integer please try again." << std::endl;
 			}
 		}
@@ -69,55 +70,63 @@ namespace test {
 };
 
 int main() {
-	test::file_writing();
+
+	const char* INPUT_FILENAME{"bitacora.txt"};
+	const char* OUTPUT_FILENAME{ "query_result.txt" };
+
+	// Create the container with the hash map
+	tp::TimeMap time_map;
+	
+	{
+		// Read the file
+		std::vector<std::string> lines{ fio::readLines(INPUT_FILENAME) };
+		time_map.reserve(lines.size());
+	
+		// Fill the container
+		for (const auto& line : lines) {
+			tp::add_entry(time_map, line);
+		}
+	}
+
+	// Sort the container
+	alg::quick_sort(time_map.begin(), time_map.end());
+
+	std::cout << "Time format: " << tp::TIME_FORMAT << std::endl;
+
+	auto beginTime{ tp::getTimeFromStr(ut::input("Enter begin time: ")) };
+	auto endTime{ tp::getTimeFromStr(ut::input("Enter end time: ")) };
+	
+	// Swap the values if necessary
+	if (endTime < beginTime) {
+		std::swap(beginTime, endTime);
+	}
+
+	// Retrieve the map entries in the given range
+	auto entries{ tp::get_entries(time_map, beginTime, endTime) };
+
+	// Case for no entries available
+	if (entries.empty()) {
+		std::cout << "No entries found in that time range." << std::endl;
+	}
+	else {
+
+		std::vector<const std::string*> query_lines;
+		query_lines.reserve(entries.size());
+
+		// Print all the entries found
+		for (const auto& entry : entries) {
+			std::cout << entry->second << std::endl;
+			query_lines.push_back(&entry->second);
+		}
+
+		if (!fio::writeLines(OUTPUT_FILENAME, query_lines)) {
+			std::cout << "Error writing file " << OUTPUT_FILENAME << "." << std::endl;
+		}
+	}
+
+
+	std::cout << "\nPress ENTER to exit. " << std::endl;
+	std::cin.get();
+
+	return 0;
 }
-
-
-//int main() {
-//
-//	const char* INPUT_FILENAME{"bitacora.txt"};
-//
-//	// Read the file
-//	std::vector<std::string> lines{fio::readLines(INPUT_FILENAME)};
-//	
-//	// Create the container with the hash map
-//	tp::TimeMap time_map;
-//
-//	// Fill the container
-//	for (const auto& line : lines) {
-//		tp::add_entry(time_map, line);
-//	}
-//
-//	// Sort the container
-//	alg::quick_sort(time_map.begin(), time_map.end());
-//
-//	std::cout << "Time format: " << tp::TIME_FORMAT << std::endl;
-//
-//	auto beginTime{ tp::getTimeFromStr(ut::input("Enter begin time:")) };
-//	auto endTime{ tp::getTimeFromStr(ut::input("Enter end time:")) };
-//	
-//	// Swap the values if necessary
-//	if (endTime < beginTime) {
-//		std::swap(beginTime, endTime);
-//	}
-//
-//	// Retrieve the map entries in the given range
-//	auto entries{ tp::get_entries(time_map, beginTime, endTime) };
-//
-//	// Case for no entries available
-//	if (entries.empty()) {
-//		std::cout << "No entries found in that time range." << std::endl;
-//	}
-//	else {
-//		// Print all the entries found
-//		for (const auto& entry : entries) {
-//			std::cout << entry->second << std::endl;
-//		}
-//	}
-//
-//
-//	std::cout << "\nPress ENTER to exit. " << std::endl;
-//	std::cin.get();
-//
-//	return 0;
-//}

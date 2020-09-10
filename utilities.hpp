@@ -8,6 +8,14 @@
 namespace ut {
 	
 	template <typename Iterable>
+	void print_iterable_of_ptrs(const Iterable iterable, const char* separator = " ", bool endline = true, std::ostream& out = std::cout) {
+		for (const auto& bar : iterable)
+			out << *bar << separator;
+		if (endline)
+			out << '\n';
+	}
+
+	template <typename Iterable>
 	void print_iterable(const Iterable& container, const char* separator = " ", bool endline = true, std::ostream& out = std::cout) {
 		for (const auto& v : container)
 			out << v << separator;
@@ -25,6 +33,7 @@ namespace ut {
 		if (endline)
 			out << '\n';
 	}
+		
 
 	std::string input(const std::string& prompt = "", std::istream& in = std::cin, std::ostream& out = std::cout) {
 		if (!prompt.empty()) {
@@ -36,8 +45,7 @@ namespace ut {
 	}
 
 	template<typename ... Args>
-	std::string string_format(const std::string& format, Args ... args)
-	{
+	std::string string_format(const std::string& format, Args ... args)	{
 		size_t size = snprintf(nullptr, 0, format.c_str(), args ...) + 1; // Extra space for '\0'
 		if (size <= 0) { throw std::runtime_error("Error during formatting."); }
 		std::unique_ptr<char[]> buf(new char[size]);
