@@ -11,6 +11,7 @@ const std::tm tp::DEFAULT_TIME_STRUCT{
 	}()
 };
 
+// Converts time formatted string into time_t.
 time_t tp::getTimeFromStr(const std::string& str, const char* timeFmt) {
 	std::istringstream ss{ str };
 	std::tm timeStruct{ DEFAULT_TIME_STRUCT };
@@ -18,6 +19,7 @@ time_t tp::getTimeFromStr(const std::string& str, const char* timeFmt) {
 	return std::mktime(&timeStruct);
 }
 
+// Adds an entry to the tp::TimeMap given a file line.
 void tp::add_entry(TimeMap& time_map, const std::string& line){
 	// Get the file line into a stream to output tokens
 	std::istringstream fullLine{ line };
@@ -39,6 +41,7 @@ void tp::add_entry(TimeMap& time_map, const std::string& line){
 	time_map.emplace_back(timeValue, line);
 }
 
+// Returns view of entries found in the given range of time_t values.
 std::vector<const tp::Entry*> tp::get_entries(const tp::TimeMap& time_map, time_t min, time_t max){
 	auto begin{ time_map.begin() };
 	auto end{ time_map.end() };

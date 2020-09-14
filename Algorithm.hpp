@@ -19,7 +19,9 @@ namespace alg {
 	// Wrapper for containers defining begin and end
 	template <typename Container>
 	void quick_sort(const Container& container);
-
+	
+	// Searches for key in sorted iterator range. Returns iterator of element or end.
+	// Time complexity: O(log(n))
 	template <typename It, typename K>
 	It binary_search(It begin, It end, const K& key);
 

@@ -10,10 +10,9 @@
 
 class tp {
 	public:
-	using  Entry = std::pair<time_t, std::string>;
-	using TimeMap = std::vector<Entry>;
+	using  Entry = std::pair<time_t, std::string>; // Typedef for entry of the map.
+	using TimeMap = std::vector<Entry>; // STL container used to store time entries.
 
-	
 	// Time format to be used by the time parser
 	static const char* TIME_FORMAT;
 
